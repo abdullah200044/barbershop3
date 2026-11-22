@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salon Musterstadt – Friseur in Düren</title>
+<meta name="description" content="Friseursalon in Düren: Haarschnitte, Farbe, Styling und Bartpflege. Jetzt Termin anfragen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F2F7; --ink:#1F1A26; --plum:#3A1F4D; --berry:#C2185B; --mist:#E3DCEA; --white:#fff;
+  --font:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--paper);color:var(--ink);line-height:1.6;font-size:1.05rem}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--berry);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+
+/* Navigation */
+header{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--mist)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 1.25rem;max-width:1080px;margin:0 auto}
+.logo{font-weight:800;font-size:1.25rem;text-decoration:none;letter-spacing:-.02em}
+nav ul{display:flex;gap:1.4rem;list-style:none}
+nav ul a{text-decoration:none;font-weight:600;font-size:.95rem}
+nav ul a:hover{color:var(--berry)}
+.btn{display:inline-block;background:var(--berry);color:var(--white);padding:.8rem 1.5rem;border-radius:999px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font-family:inherit;font-size:1rem}
+.btn:hover{background:#9c1049}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--white)}
+
+/* Hero: der "Schnitt" ist eine diagonale Kante */
+.hero{background:var(--plum);color:var(--white);clip-path:polygon(0 0,100% 0,100% 88%,0 100%);padding:5rem 0 9rem}
+.hero h1{font-size:clamp(2.6rem,8vw,6rem);line-height:.98;font-weight:800;letter-spacing:-.04em;max-width:13ch}
+.hero p{max-width:46ch;margin:1.5rem 0 2rem;font-size:1.2rem;color:#E9DDF2}
+.hero .row{display:flex;gap:1rem;flex-wrap:wrap}
+.hero .btn.ghost{color:var(--white);border-color:var(--white)}
+.hero .btn.ghost:hover{background:var(--white);color:var(--plum)}
+
+section{padding:4.5rem 0}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);letter-spacing:-.03em;line-height:1.1;margin-bottom:2rem}
+
+/* Leistungen */
+.prices{list-style:none;max-width:680px}
+.prices li{display:flex;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--mist)}
+.prices strong{font-weight:600}
+.prices span.d{display:block;font-size:.9rem;color:#5d5468}
+.prices .p{font-weight:800;white-space:nowrap}
+.note{margin-top:1rem;font-size:.9rem;color:#5d5468}
+
+/* Galerie */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem}
+.gallery figure{aspect-ratio:4/5;border-radius:10px;overflow:hidden;background:var(--mist)}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block}
+.gallery .ph{display:grid;place-items:center;height:100%;color:var(--plum);font-weight:600;padding:1rem;text-align:center}
+.g1{background:linear-gradient(160deg,#d9c3e6,#b98ed4)}
+.g2{background:linear-gradient(160deg,#f3c1d6,#d9628f)}
+.g3{background:linear-gradient(160deg,#cfc9ea,#8e84c9)}
+.g4{background:linear-gradient(160deg,#ead5c6,#c99a7c)}
+
+/* Kontakt */
+.contact{background:var(--white)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2.5rem}
+table{border-collapse:collapse;width:100%}
+td{padding:.45rem 0;border-bottom:1px solid var(--mist)}
+td:last-child{text-align:right;font-weight:600}
+address{font-style:normal;margin-bottom:1.25rem}
+.stack{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
+
+footer{padding:2rem 0;font-size:.9rem;color:#5d5468}
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+footer a{margin-left:1rem}
+
+/* Termin-Fenster */
+dialog{border:0;border-radius:16px;padding:1.75rem;width:min(460px,92vw);margin:auto;background:var(--white);color:var(--ink);font-family:var(--font)}
+dialog::backdrop{background:rgba(31,26,38,.6)}
+dialog h2{font-size:1.6rem;margin-bottom:1rem}
+dialog label{display:block;font-weight:600;font-size:.95rem;margin-top:1rem}
+dialog input,dialog select{width:100%;margin-top:.3rem;padding:.7rem .8rem;border:2px solid var(--mist);border-radius:8px;font:inherit;background:var(--paper);color:var(--ink)}
+dialog input:focus,dialog select:focus{border-color:var(--berry);outline:none}
+dialog .msg{min-height:1.4rem;margin-top:.6rem;font-size:.9rem;color:var(--berry)}
+dialog .actions{display:flex;gap:.75rem;margin-top:1rem;flex-wrap:wrap}
+@media (max-width:640px){nav ul{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav aria-label="Hauptnavigation">
+    <a class="logo" href="#top">Salon Musterstadt</a>
+    <ul>
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a class="btn" href="#kontakt" data-termin>Termin anfragen</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <h1>Schnitt, der zu dir passt.</h1>
+      <p>Friseursalon in Düren. Wir hören zu, beraten ehrlich und schneiden so, dass die Frisur auch zu Hause funktioniert.</p>
+      <div class="row">
+        <a class="btn" href="#kontakt" data-termin>Termin anfragen</a>
+        <a class="btn ghost" href="#leistungen">Preise ansehen</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="leistungen">
+    <div class="wrap">
+      <h2>Leistungen und Preise</h2>
+      <!-- Preise und Leistungen hier anpassen -->
+      <ul class="prices">
+        <li><div><strong>Damen: Waschen, Schneiden, Föhnen</strong><span class="d">Mit Beratung und Styling</span></div><span class="p">ab 45 €</span></li>
+        <li><div><strong>Herren: Haarschnitt</strong><span class="d">Waschen und Styling inklusive</span></div><span class="p">ab 25 €</span></li>
+        <li><div><strong>Kinder bis 12 Jahre</strong></div><span class="p">ab 18 €</span></li>
+        <li><div><strong>Farbe oder Ansatz färben</strong><span class="d">Preis je nach Haarlänge</span></div><span class="p">ab 55 €</span></li>
+        <li><div><strong>Strähnen und Balayage</strong></div><span class="p">ab 80 €</span></li>
+        <li><div><strong>Bart trimmen</strong></div><span class="p">ab 15 €</span></li>
+        <li><div><strong>Hochsteck- und Festfrisuren</strong><span class="d">Bitte vorab Termin vereinbaren</span></div><span class="p">ab 50 €</span></li>
+      </ul>
+      <p class="note">Den genauen Preis nennen wir dir vor der Behandlung.</p>
+    </div>
+  </section>
+
+  <section id="galerie" style="background:var(--white)">
+    <div class="wrap">
+      <h2>Unsere Arbeit</h2>
+      <!-- Eigene Fotos: Ordner "images" anlegen, Bilder hochladen und die Platzhalter
+           durch <img src="images/foto1.jpg" alt="Beschreibung"> ersetzen. -->
+      <div class="gallery">
+        <figure class="g1"><div class="ph">Foto 1 hier einfügen</div></figure>
+        <figure class="g2"><div class="ph">Foto 2 hier einfügen</div></figure>
+        <figure class="g3"><div class="ph">Foto 3 hier einfügen</div></figure>
+        <figure class="g4"><div class="ph">Foto 4 hier einfügen</div></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" class="contact">
+    <div class="wrap">
+      <h2>Termin anfragen</h2>
+      <div class="cols">
+        <div>
+          <address>
+            <strong>Salon Musterstadt</strong><br>
+            Musterstraße 1<br>
+            52349 Düren
+          </address>
+          <p>Telefon: <a href="tel:+491778331418">0177 8331418</a></p>
+          <div class="stack">
+            <a class="btn" href="https://wa.me/491630281893?text=Hallo%2C%20ich%20m%C3%B6chte%20gerne%20einen%20Termin%20vereinbaren.">Per WhatsApp schreiben</a>
+            <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Musterstra%C3%9Fe+1+52349+D%C3%BCren">Route in Google Maps</a>
+          </div>
+        </div>
+        <div>
+          <table aria-label="Öffnungszeiten">
+            <tr><td>Montag</td><td>geschlossen</td></tr>
+            <tr><td>Dienstag – Freitag</td><td>9:00 – 18:00</td></tr>
+            <tr><td>Samstag</td><td>9:00 – 14:00</td></tr>
+            <tr><td>Sonntag</td><td>geschlossen</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Salon Musterstadt</span>
+    <span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+
+<dialog id="termin" aria-labelledby="termin-titel">
+  <form id="termin-form" method="dialog">
+    <h2 id="termin-titel">Termin anfragen</h2>
+
+    <label for="leistung">Leistung</label>
+    <select id="leistung" required>
+      <option>Damen: Waschen, Schneiden, Föhnen</option>
+      <option>Herren: Haarschnitt</option>
+      <option>Kinder bis 12 Jahre</option>
+      <option>Farbe oder Ansatz färben</option>
+      <option>Strähnen und Balayage</option>
+      <option>Bart trimmen</option>
+      <option>Hochsteck- und Festfrisuren</option>
+    </select>
+
+    <label for="datum">Datum</label>
+    <input type="date" id="datum" required>
+
+    <label for="uhrzeit">Uhrzeit</label>
+    <select id="uhrzeit" required disabled>
+      <option value="">Bitte zuerst ein Datum wählen</option>
+    </select>
+
+    <label for="name">Dein Name</label>
+    <input type="text" id="name" autocomplete="name" required>
+
+    <label for="tel">Telefonnummer</label>
+    <input type="tel" id="tel" autocomplete="tel" required>
+
+    <p class="msg" id="msg" role="alert"></p>
+    <div class="actions">
+      <button class="btn" type="submit">Per WhatsApp senden</button>
+      <button class="btn ghost" type="button" id="schliessen">Abbrechen</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+(function(){
+  // WhatsApp-Nummer des Salons: Ländervorwahl ohne + und ohne 0 (Deutschland = 49)
+  var WHATSAPP = "491630281893";
+  // Öffnungszeiten: Wochentag (0=So ... 6=Sa) -> [erster Termin, letzter Termin] in Stunden
+  var ZEITEN = {2:[9,17.5],3:[9,17.5],4:[9,17.5],5:[9,17.5],6:[9,13.5]};
+
+  var dlg = document.getElementById("termin");
+  var form = document.getElementById("termin-form");
+  var datum = document.getElementById("datum");
+  var zeit = document.getElementById("uhrzeit");
+  var msg = document.getElementById("msg");
+
+  function iso(d){ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+  datum.min = iso(new Date());
+
+  function fmtZeit(h){ var m = h % 1 ? "30" : "00"; return Math.floor(h)+":"+m; }
+
+  function zeitenFuellen(){
+    msg.textContent = "";
+    zeit.innerHTML = "";
+    if(!datum.value){ zeit.disabled = true; zeit.innerHTML = '<option value="">Bitte zuerst ein Datum wählen</option>'; return; }
+    var tag = new Date(datum.value + "T12:00:00").getDay();
+    var z = ZEITEN[tag];
+    if(!z){
+      zeit.disabled = true;
+      zeit.innerHTML = '<option value="">Geschlossen</option>';
+      msg.textContent = "An diesem Tag ist der Salon geschlossen. Bitte wähle Dienstag bis Samstag.";
+      return;
+    }
+    zeit.disabled = false;
+    for(var h = z[0]; h <= z[1]; h += 0.5){
+      var o = document.createElement("option");
+      o.value = o.textContent = fmtZeit(h) + " Uhr";
+      zeit.appendChild(o);
+    }
+  }
+  datum.addEventListener("change", zeitenFuellen);
+
+  document.querySelectorAll("[data-termin]").forEach(function(el){
+    el.addEventListener("click", function(e){
+      e.preventDefault();
+      if(typeof dlg.showModal === "function"){ dlg.showModal(); } else { location.hash = "kontakt"; }
+    });
+  });
+  document.getElementById("schliessen").addEventListener("click", function(){ dlg.close(); });
+  dlg.addEventListener("click", function(e){ if(e.target === dlg){ dlg.close(); } });
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(zeit.disabled || !zeit.value){ msg.textContent = "Bitte wähle ein Datum an einem Öffnungstag und eine Uhrzeit."; return; }
+    var d = new Date(datum.value + "T12:00:00");
+    var datumDe = d.toLocaleDateString("de-DE",{weekday:"long",day:"2-digit",month:"2-digit",year:"numeric"});
+    var text = "Hallo, ich möchte gerne einen Termin anfragen.\n\n" +
+      "Leistung: " + document.getElementById("leistung").value + "\n" +
+      "Datum: " + datumDe + "\n" +
+      "Uhrzeit: " + zeit.value + "\n" +
+      "Name: " + document.getElementById("name").value + "\n" +
+      "Telefon: " + document.getElementById("tel").value;
+    window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text), "_blank", "noopener");
+    dlg.close();
+  });
+})();
+</script>
+
+</body>
+</html>
